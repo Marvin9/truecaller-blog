@@ -6,5 +6,9 @@ node_js:
 before_script:
   - cd client && yarn
 
-scripts:
-  - cd client && yarn run ci
+jobs:
+  include:
+    - stage: Lint client
+      script: yarn run lint
+    - state: Build client
+      script: yarn build
