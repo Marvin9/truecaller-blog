@@ -12,6 +12,7 @@
     "global-require": "off",
     "implicit-arrow-linebreak": "off",
     "function-paren-newline": "off",
-    "indent": "off"
+    "indent": "off",
+    "no-restricted-globals": "off"
   }
 }
