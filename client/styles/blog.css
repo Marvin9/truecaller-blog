@@ -1,0 +1,30 @@
+/*
+  Only way to provide style to dangerouslyLoadedHTML
+  Below css is mainly focused to style page => /posts/[post].tsx
+ */
+
+p,
+ul {
+  line-height: 2;
+}
+
+a {
+  color: blue !important;
+}
+
+img {
+  height: 200px;
+  width: auto;
+  margin: 20px auto;
+}
+
+figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+figcaption {
+  font-size: smaller;
+  font-weight: lighter;
+}

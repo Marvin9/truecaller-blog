@@ -1,7 +1,9 @@
 import React from 'react';
 import { Box, Card, Flex, Image, Text } from 'rebass';
+import Link from 'next/link';
 
 interface ArticleCardTypes {
+  articleID: number;
   articleThumbnailURL: string;
   articleTitle: string;
   articleDescription: string;
@@ -15,6 +17,7 @@ interface ArticleCardTypes {
 }
 
 export const ArticleCard: React.FC<ArticleCardTypes> = ({
+  articleID,
   articleThumbnailURL,
   articleTitle,
   articleDescription,
@@ -25,16 +28,26 @@ export const ArticleCard: React.FC<ArticleCardTypes> = ({
   <Box width={1 / 2} p={3}>
     <Card sx={{ border: '1px solid #EAEAEA' }}>
       {/* THUMBNAIL */}
-      <Image src={articleThumbnailURL} />
+      <Link href={`/posts/${articleID}`}>
+        <Image src={articleThumbnailURL} sx={{ cursor: 'pointer' }} />
+      </Link>
 
       {/* CARD BODY */}
       <Box p={4}>
         {/* ARTICLE TITLE */}
-        <Text
-          fontSize={4}
-          fontWeight="bold"
-          dangerouslySetInnerHTML={{ __html: articleTitle }}
-        ></Text>
+        <Link href={`/posts/${articleID}`}>
+          <Text
+            fontSize={4}
+            fontWeight="bold"
+            dangerouslySetInnerHTML={{ __html: articleTitle }}
+            sx={{
+              cursor: 'pointer',
+              ':hover': {
+                textDecoration: 'underline',
+              },
+            }}
+          ></Text>
+        </Link>
 
         {/* ARTICLE DESCRIPTION */}
         <Text

@@ -48,6 +48,7 @@ const Home: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
           {_posts.map((post) => (
             <ArticleCard
               key={post.ID}
+              articleID={post.ID}
               articleThumbnailURL={post.post_thumbnail.URL}
               articleTitle={post.title}
               articleDescription={post.excerpt}
@@ -57,6 +58,7 @@ const Home: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
             />
           ))}
 
+          {/* LOADING BUTTON AT THE END OF PAGE */}
           {nextPageLoading ? (
             <img src={svg} className="spinner" />
           ) : (

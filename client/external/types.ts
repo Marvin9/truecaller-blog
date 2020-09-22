@@ -26,6 +26,8 @@ export type PostType = {
   };
   // article published date
   date: string;
+  // content
+  content: string;
 };
 
 // response shape that come from API
