@@ -7,5 +7,5 @@ client:
 	cd client && yarn dev
 
 .PHONY:run-both
-run:
+run-both:
 	make client& make server

@@ -5,9 +5,13 @@ interface ArticleCardTypes {
   articleThumbnailURL: string;
   articleTitle: string;
   articleDescription: string;
-  articleCategories: string[];
+  articleCategories: {
+    [categoryName: string]: {
+      ID: number;
+    };
+  };
   articleAuthor: string;
-  articlePublishedDate: Date;
+  articlePublishedDate: string;
 }
 
 export const ArticleCard: React.FC<ArticleCardTypes> = ({
@@ -18,52 +22,55 @@ export const ArticleCard: React.FC<ArticleCardTypes> = ({
   articleAuthor,
   articlePublishedDate,
 }) => (
-  <Card sx={{ border: '1px solid #EAEAEA' }}>
-    {/* THUMBNAIL */}
-    <Image src={articleThumbnailURL} />
+  <Box width={1 / 2} p={3}>
+    <Card sx={{ border: '1px solid #EAEAEA' }}>
+      {/* THUMBNAIL */}
+      <Image src={articleThumbnailURL} />
 
-    {/* CARD BODY */}
-    <Box p={4}>
-      {/* ARTICLE TITLE */}
-      <Text fontSize={4} fontWeight="bold">
-        {articleTitle}
-      </Text>
+      {/* CARD BODY */}
+      <Box p={4}>
+        {/* ARTICLE TITLE */}
+        <Text
+          fontSize={4}
+          fontWeight="bold"
+          dangerouslySetInnerHTML={{ __html: articleTitle }}
+        ></Text>
 
-      {/* ARTICLE DESCRIPTION */}
-      <Text
-        fontSize={1}
-        lineHeight={1.5}
-        dangerouslySetInnerHTML={{ __html: articleDescription }}
-      />
+        {/* ARTICLE DESCRIPTION */}
+        <Text
+          fontSize={1}
+          lineHeight={1.5}
+          dangerouslySetInnerHTML={{ __html: articleDescription }}
+        />
 
-      {/* ARTICLE CATEGORIES */}
-      <Flex>
-        {articleCategories.map((articleCategory, idx) => (
-          <Box
-            sx={{
-              display: 'inline-block',
-              py: 1,
-              mb: 2,
-              mr: 3,
-              borderRadius: 9999,
-              fontWeight: 'lighter',
-              textDecoration: 'underline',
-            }}
-            fontSize={1}
-            key={`${articleCategory}_${idx}`}
-          >
-            {articleCategory}
-          </Box>
-        ))}
-      </Flex>
+        {/* ARTICLE CATEGORIES */}
+        <Flex>
+          {Object.keys(articleCategories).map((articleCategory, idx) => (
+            <Box
+              sx={{
+                display: 'inline-block',
+                py: 1,
+                mb: 2,
+                mr: 3,
+                borderRadius: 9999,
+                fontWeight: 'lighter',
+                textDecoration: 'underline',
+              }}
+              fontSize={1}
+              key={`${articleCategory}_${idx}`}
+            >
+              {articleCategory}
+            </Box>
+          ))}
+        </Flex>
 
-      <br />
+        <br />
 
-      {/* PUBLISHED TIME & AUTHOR NAME */}
-      <Text fontSize={1}>
-        {articlePublishedDate}
-        <u>{articleAuthor}</u>
-      </Text>
-    </Box>
-  </Card>
+        {/* PUBLISHED TIME & AUTHOR NAME */}
+        <Text fontSize={1}>
+          {articlePublishedDate} <u>{articleAuthor}</u>
+        </Text>
+      </Box>
+    </Card>
+  </Box>
 );
