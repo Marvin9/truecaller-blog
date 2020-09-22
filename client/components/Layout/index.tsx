@@ -4,8 +4,10 @@ import { Flex } from 'rebass';
 import Header from './Header';
 import Navigation from './Navigation';
 
+export type kind = 'list' | 'article';
+
 interface LayoutTypes {
-  kind?: 'list' | 'article';
+  kind?: kind;
   children: React.ReactNode;
 }
 
@@ -21,7 +23,7 @@ export const Layout: React.FC<LayoutTypes> = ({ kind = 'list', children }) => (
     <br />
 
     {/* CATEGORIES & TAGS LIST SECTION */}
-    <Navigation />
+    <Navigation kind={kind} />
 
     {/* DYNAMIC BODY SECTION, TO LIST ALL ARTICLES/RENDER FULL ARTICLE */}
     <Flex
