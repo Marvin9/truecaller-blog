@@ -12,7 +12,7 @@ const spinner = require('../../public/spinner.svg');
 const Post: React.FC = () => {
   const [postData, updatePostData] = useState<PostType>(null);
   const [relatedPostsData, updateRelatedPostsData] = useState<PostType[]>([]);
-  const [initLoading, updateInitLoading] = useState(false);
+  const [initLoading, updateInitLoading] = useState(true);
   const router = useRouter();
   const { post } = router.query;
 
