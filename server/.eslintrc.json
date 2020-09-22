@@ -9,6 +9,9 @@
     "ecmaVersion": 12
   },
   "rules": {
-    "global-require": "off"
+    "global-require": "off",
+    "implicit-arrow-linebreak": "off",
+    "function-paren-newline": "off",
+    "indent": "off"
   }
 }
