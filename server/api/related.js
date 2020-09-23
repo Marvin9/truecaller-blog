@@ -36,6 +36,8 @@ module.exports = async (req, res, next) => {
     //  top 3
     const totalHits = relatedPostsData.hits.length;
     const min = totalHits < maxBound ? totalHits : maxBound;
+
+    // fetch post details of top 'min' hits
     for (let i = 0; i < min; i++) {
       const hit = relatedPostsData.hits[i];
       const postIdOfHit = hit.fields.post_id;
