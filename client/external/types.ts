@@ -41,6 +41,6 @@ export type response = {
 export type categoryType = {
   // name of category
   name: string;
-  // id of category
-  ID: number;
+  // slug of category
+  slug: string;
 };

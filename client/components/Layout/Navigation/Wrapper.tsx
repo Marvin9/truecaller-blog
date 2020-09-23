@@ -37,7 +37,7 @@ export const Wrapper: React.FC<WrapperTypes> = ({ type }) => {
       >
         <option className="opt">None</option>
         {list.map((listItem) => (
-          <option className="opt" value={listItem.ID} key={listItem.ID}>
+          <option className="opt" value={listItem.slug} key={listItem.slug}>
             {listItem.name}
           </option>
         ))}
