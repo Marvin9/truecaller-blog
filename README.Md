@@ -85,3 +85,5 @@ Open `http://localhost:3000` in browser. Server is running on port `8080`.
 ```bash
 docker-compose up
 ```
+
+![](./demo.png)
