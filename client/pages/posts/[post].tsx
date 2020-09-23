@@ -13,11 +13,13 @@ const Post: React.FC = () => {
   const [postData, updatePostData] = useState<PostType>(null);
   const [relatedPostsData, updateRelatedPostsData] = useState<PostType[]>([]);
   const [initLoading, updateInitLoading] = useState(true);
+
   const router = useRouter();
   const { post } = router.query;
 
   // TODO: handle post isNaN
 
+  // LOAD COMPLETE POST & RELATED POSTS WHENEVER URL HITS => /posts/[post].jsx
   useEffect(() => {
     updateInitLoading(true);
     Promise.all([getPost(+post), getRelatedPosts(+post)])
@@ -47,14 +49,20 @@ const Post: React.FC = () => {
         {initLoading ? (
           Spinner
         ) : (
+          // COMPLETE ARTICLE
           <Flex flexDirection="column" mt={4}>
+            {/* ARTICLE MAIN IMAGE */}
             <Image src={postData.post_thumbnail.URL} />
             <br />
+
+            {/* ARTICLE HEADING */}
             <Text
               fontSize={5}
               fontWeight="bold"
               dangerouslySetInnerHTML={{ __html: postData.title }}
             />
+
+            {/* ARTICLE CONTENT */}
             <Text dangerouslySetInnerHTML={{ __html: postData.content }} />
           </Flex>
         )}

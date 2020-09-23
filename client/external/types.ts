@@ -36,3 +36,11 @@ export type response = {
   // extend and replace data type as required
   data: any;
 };
+
+// type of category/tag
+export type categoryType = {
+  // name of category
+  name: string;
+  // id of category
+  ID: number;
+};
