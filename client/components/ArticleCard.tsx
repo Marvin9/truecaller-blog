@@ -4,21 +4,19 @@ import Link from 'next/link';
 
 import { formatTimeDiff } from '../utils/timeDiff';
 
+type commonForCategoryAndTag = {
+  [name: string]: {
+    slug: string;
+  };
+};
+
 interface ArticleCardTypes {
   articleID: number;
   articleThumbnailURL: string;
   articleTitle: string;
   articleDescription: string;
-  articleCategories: {
-    [categoryName: string]: {
-      slug: string;
-    };
-  };
-  articleTags: {
-    [tagName: string]: {
-      slug: string;
-    };
-  };
+  articleCategories: commonForCategoryAndTag;
+  articleTags: commonForCategoryAndTag;
   articleAuthor: string;
   articlePublishedDate: string;
 }
@@ -33,7 +31,7 @@ export const ArticleCard: React.FC<ArticleCardTypes> = ({
   articlePublishedDate,
   articleTags,
 }) => (
-  <Box width={[1, 1 / 2]} p={[2, 3]}>
+  <Box width={1} p={[0, 3]} mb={[4, 0]}>
     <Card sx={{ border: '1px solid #EAEAEA' }}>
       {/* THUMBNAIL */}
       {articleThumbnailURL && (

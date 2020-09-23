@@ -57,9 +57,9 @@ export const Wrapper: React.FC<WrapperTypes> = ({ type }) => {
     <Flex
       alignItems="center"
       justifyContent="center"
-      mx={5}
+      mx={[0, 5]}
       flexDirection={['column', 'row']}
-      my={[2, 0]}
+      my={[4, 0]}
     >
       <Label fontWeight="bolder" width="auto">
         {type === 'category' ? 'Categories' : 'Tags'}
@@ -68,7 +68,7 @@ export const Wrapper: React.FC<WrapperTypes> = ({ type }) => {
         name={type}
         value={listSelection}
         width="200px"
-        ml={4}
+        ml={[0, 4]}
         sx={{ border: 'none', borderBottom: '1px solid white' }}
         onChange={(e) => selectListItem(e.target.value)}
       >

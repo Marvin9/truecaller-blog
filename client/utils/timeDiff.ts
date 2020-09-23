@@ -3,6 +3,7 @@ const usePlural = (num: number): string => (num !== 1 ? 's' : '');
 const rules = [
   {
     unit: 'second',
+    // divide by bound to get next unit
     bound: 60,
   },
   {
