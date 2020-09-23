@@ -78,7 +78,9 @@ const Post: React.FC = () => {
           <Flex flexWrap="wrap">
             {relatedPostsData.map((relatedPost) => (
               <Card width={1 / 3} p={5}>
-                <Image src={relatedPost.post_thumbnail.URL} mb={4} />
+                {relatedPost.post_thumbnail && (
+                  <Image src={relatedPost.post_thumbnail.URL} mb={4} />
+                )}
                 <Link href={`/posts/${relatedPost.ID}`}>
                   <Text
                     fontSize={4}

@@ -2,6 +2,8 @@ import React from 'react';
 import { Box, Card, Flex, Image, Text } from 'rebass';
 import Link from 'next/link';
 
+import { formatTimeDiff } from '../utils/timeDiff';
+
 interface ArticleCardTypes {
   articleID: number;
   articleThumbnailURL: string;
@@ -89,7 +91,8 @@ export const ArticleCard: React.FC<ArticleCardTypes> = ({
 
         {/* PUBLISHED TIME & AUTHOR NAME */}
         <Text fontSize={1}>
-          {articlePublishedDate} <u>{articleAuthor}</u>
+          {formatTimeDiff(new Date(articlePublishedDate))} by{' '}
+          <u>{articleAuthor}</u>
         </Text>
       </Box>
     </Card>

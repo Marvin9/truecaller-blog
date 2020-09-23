@@ -16,8 +16,6 @@ const none = 'none';
 export const Wrapper: React.FC<WrapperTypes> = ({ type }) => {
   // list is either categories or tags, based on 'type'
   const [list, updateList] = useState<categoryOrTagType[]>([]);
-  const [listSelection, selectListItem] = useState(none);
-
   useEffect(() => {
     if (type === 'category') {
       // load categories
@@ -32,7 +30,15 @@ export const Wrapper: React.FC<WrapperTypes> = ({ type }) => {
     }
   }, []);
 
+  const [listSelection, selectListItem] = useState(none);
+  const initialMount = React.useRef(null);
+
+  // update routes on select event
   useEffect(() => {
+    if (initialMount.current === null) {
+      initialMount.current = true;
+      return;
+    }
     if (listSelection !== none) {
       router.push(`/?${type}=${listSelection}`);
     } else {

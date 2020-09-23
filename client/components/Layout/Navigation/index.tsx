@@ -13,14 +13,12 @@ const Navigation: React.FC<{ kind: kind }> = ({ kind }) => (
     alignItems="center"
     justifyContent="center"
   >
-    {/* GO BACK OPTION, IF IT IS ARTICLE */}
-    {kind === 'article' && (
-      <Link href="/">
-        <Text fontWeight="bold" sx={{ cursor: 'pointer' }}>
-          HOME
-        </Text>
-      </Link>
-    )}
+    {/* HOME PAGE LINK */}
+    <Link href="/">
+      <Text fontWeight="bold" sx={{ cursor: 'pointer' }}>
+        HOME
+      </Text>
+    </Link>
     <Wrapper type="category" />
     <Wrapper type="tag" />
   </Flex>
