@@ -1,5 +1,10 @@
 version: "3"
 services:
+  redis:
+    network_mode: host
+    image: "bitnami/redis:latest"
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
   client:
     network_mode: host
     build: ./client
@@ -12,3 +17,5 @@ services:
     build: ./server
     ports:
       - "8080:8080"
+    depends_on:
+      - redis
