@@ -1,3 +1,8 @@
+.PHONY:install
+install:
+	cd client && $(COMMAND)
+	cd server && $(COMMAND)
+
 .PHONY:server
 server:
 	cd server && yarn start
