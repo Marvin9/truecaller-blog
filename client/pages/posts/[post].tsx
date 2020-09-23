@@ -52,7 +52,7 @@ const Post: React.FC = () => {
           // COMPLETE ARTICLE
           <Flex flexDirection="column" mt={4}>
             {/* ARTICLE MAIN IMAGE */}
-            <Image src={postData.post_thumbnail.URL} />
+            <Image src={postData.post_thumbnail.URL} alt={postData.title} />
             <br />
 
             {/* ARTICLE HEADING */}
@@ -79,7 +79,11 @@ const Post: React.FC = () => {
             {relatedPostsData.map((relatedPost) => (
               <Card width={1 / 3} p={5}>
                 {relatedPost.post_thumbnail && (
-                  <Image src={relatedPost.post_thumbnail.URL} mb={4} />
+                  <Image
+                    alt={relatedPost.title}
+                    src={relatedPost.post_thumbnail.URL}
+                    mb={4}
+                  />
                 )}
                 <Link href={`/posts/${relatedPost.ID}`}>
                   <Text

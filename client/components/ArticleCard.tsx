@@ -33,7 +33,11 @@ export const ArticleCard: React.FC<ArticleCardTypes> = ({
       {/* THUMBNAIL */}
       {articleThumbnailURL && (
         <Link href={`/posts/${articleID}`}>
-          <Image src={articleThumbnailURL} sx={{ cursor: 'pointer' }} />
+          <Image
+            src={articleThumbnailURL}
+            sx={{ cursor: 'pointer' }}
+            alt={articleTitle}
+          />
         </Link>
       )}
 
