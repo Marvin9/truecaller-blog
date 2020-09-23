@@ -8,7 +8,8 @@ import { getPosts } from '../external/apis';
 
 const svg = require('../public/spinner.svg');
 
-export async function getStaticProps() {
+export async function getStaticProps(context) {
+  console.log(context);
   const posts = await getPosts();
 
   return {
@@ -21,8 +22,6 @@ export async function getStaticProps() {
 const Home: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
   posts,
 }) => {
-  let loadingMutex = false;
-
   // _posts is used to store more posts
   const [_posts, updatePosts] = useState(posts);
   const [nextPage, updateNextPage] = useState(2);
@@ -31,13 +30,9 @@ const Home: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
   // load more posts
   const loadNextPage = async () => {
     updateNextPageLoading(true);
-    // if any page loading request is pending...
-    if (loadingMutex) return;
-    loadingMutex = true;
     const newPosts = await getPosts(nextPage);
     updateNextPage(nextPage + 1);
     updatePosts([..._posts, ...newPosts]);
-    loadingMutex = false;
     updateNextPageLoading(false);
   };
 
