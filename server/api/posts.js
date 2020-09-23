@@ -8,6 +8,14 @@ const { BLOG_ENDPOINT } = require('../utils/constants');
  */
 module.exports = async (req, res, next) => {
   let { page } = req.query;
+
+  let builder = '';
+  if (req.query.category) {
+    builder = `category=${req.query.category}`;
+  } else if (req.query.tag) {
+    builder = `tag=${req.query.tag}`;
+  }
+
   if (!page) {
     page = 0;
   }
@@ -18,7 +26,7 @@ module.exports = async (req, res, next) => {
   }
 
   try {
-    const posts = await axios.get(`${BLOG_ENDPOINT}/posts?page=${page}`);
+    const posts = await axios.get(`${BLOG_ENDPOINT}/posts?${builder}&page=${page}`);
     res.statusCode = 200;
     res.json(response.successResponse(posts.data));
   } catch (e) {

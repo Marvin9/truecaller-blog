@@ -18,6 +18,7 @@ export type PostType = {
   categories: {
     [key: string]: {
       ID: number;
+      slug: string;
     };
   };
   // article author name

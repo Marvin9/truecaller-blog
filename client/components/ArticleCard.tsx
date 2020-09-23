@@ -10,6 +10,7 @@ interface ArticleCardTypes {
   articleCategories: {
     [categoryName: string]: {
       ID: number;
+      slug: string;
     };
   };
   articleAuthor: string;
@@ -59,21 +60,26 @@ export const ArticleCard: React.FC<ArticleCardTypes> = ({
         {/* ARTICLE CATEGORIES */}
         <Flex>
           {Object.keys(articleCategories).map((articleCategory, idx) => (
-            <Box
-              sx={{
-                display: 'inline-block',
-                py: 1,
-                mb: 2,
-                mr: 3,
-                borderRadius: 9999,
-                fontWeight: 'lighter',
-                textDecoration: 'underline',
-              }}
-              fontSize={1}
+            <Link
+              href={`/?category=${articleCategories[articleCategory].slug}`}
               key={`${articleCategory}_${idx}`}
             >
-              {articleCategory}
-            </Box>
+              <Box
+                sx={{
+                  display: 'inline-block',
+                  py: 1,
+                  mb: 2,
+                  mr: 3,
+                  borderRadius: 9999,
+                  fontWeight: 'lighter',
+                  textDecoration: 'underline',
+                  cursor: 'pointer',
+                }}
+                fontSize={1}
+              >
+                {articleCategory}
+              </Box>
+            </Link>
           ))}
         </Flex>
 
