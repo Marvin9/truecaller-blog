@@ -4,15 +4,15 @@ import log from '../../utils/logger';
 import * as types from '../types';
 import { API } from '../../constants';
 
-import { categoryType } from '../types';
+import { categoryOrTagType } from '../types';
 
 interface catResponse extends types.response {
   data: {
-    categories: categoryType[];
+    categories: categoryOrTagType[];
   };
 }
 
-export const getCategories = (): Promise<categoryType[] | null> => {
+export const getCategories = (): Promise<categoryOrTagType[] | null> => {
   return new Promise(async (resolve) => {
     try {
       const categoriesResp = await axios.get(`${API}/categories`);

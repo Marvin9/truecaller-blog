@@ -3,8 +3,8 @@ import { Flex } from 'rebass';
 import { Label, Select } from '@rebass/forms';
 import router from 'next/router';
 
-import { categoryType } from '../../../external/types';
-import { getCategories } from '../../../external/apis';
+import { categoryOrTagType } from '../../../external/types';
+import { getCategories, getTags } from '../../../external/apis';
 
 interface WrapperTypes {
   type: 'category' | 'tag';
@@ -15,7 +15,7 @@ const none = 'none';
 
 export const Wrapper: React.FC<WrapperTypes> = ({ type }) => {
   // list is either categories or tags, based on 'type'
-  const [list, updateList] = useState<categoryType[]>([]);
+  const [list, updateList] = useState<categoryOrTagType[]>([]);
   const [listSelection, selectListItem] = useState(none);
 
   useEffect(() => {
@@ -23,6 +23,11 @@ export const Wrapper: React.FC<WrapperTypes> = ({ type }) => {
       // load categories
       getCategories().then((categories) => {
         updateList(categories);
+      });
+    } else {
+      // load tags
+      getTags().then((tags) => {
+        updateList(tags);
       });
     }
   }, []);

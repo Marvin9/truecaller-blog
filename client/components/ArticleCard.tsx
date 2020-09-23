@@ -29,9 +29,11 @@ export const ArticleCard: React.FC<ArticleCardTypes> = ({
   <Box width={1 / 2} p={3}>
     <Card sx={{ border: '1px solid #EAEAEA' }}>
       {/* THUMBNAIL */}
-      <Link href={`/posts/${articleID}`}>
-        <Image src={articleThumbnailURL} sx={{ cursor: 'pointer' }} />
-      </Link>
+      {articleThumbnailURL && (
+        <Link href={`/posts/${articleID}`}>
+          <Image src={articleThumbnailURL} sx={{ cursor: 'pointer' }} />
+        </Link>
+      )}
 
       {/* CARD BODY */}
       <Box p={4}>

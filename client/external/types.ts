@@ -3,7 +3,7 @@ export type PostType = {
   // post ID used to navigate to full article
   ID: number;
   // article image
-  post_thumbnail: {
+  post_thumbnail?: {
     URL: string;
   };
   // article title
@@ -39,7 +39,7 @@ export type response = {
 };
 
 // type of category/tag
-export type categoryType = {
+export type categoryOrTagType = {
   // name of category
   name: string;
   // slug of category

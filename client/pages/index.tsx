@@ -79,7 +79,7 @@ const Home: React.FC<InferGetServerSidePropsType<
             <ArticleCard
               key={post.ID}
               articleID={post.ID}
-              articleThumbnailURL={post.post_thumbnail.URL}
+              articleThumbnailURL={post.post_thumbnail?.URL}
               articleTitle={post.title}
               articleDescription={post.excerpt}
               articleAuthor={post.author.name}
