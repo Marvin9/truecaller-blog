@@ -28,7 +28,7 @@
 
   - success response
 
-  ```json
+  ```
   {
       error: false,
       data: https://developer.wordpress.com/docs/api/1.1/get/sites/%24site/posts/[posts - Response Parameters]
@@ -37,7 +37,7 @@
 
   - error response (Same error response in each API).
 
-  ```json
+  ```
   {
     "error": true,
     "data": string
@@ -48,7 +48,7 @@
 
   - success response
 
-  ```json
+  ```
   {
       error: false,
       data: https://developer.wordpress.com/docs/api/1.1/get/sites/%24site/categories [categories - Response parameters]
@@ -59,7 +59,7 @@
 
   - success response
 
-  ```json
+  ```
   {
       error: false,
       data: https://developer.wordpress.com/docs/api/1.1/get/sites/%24site/tags [tags - Response parameters]
@@ -70,7 +70,7 @@
 
   - success response
 
-  ```json
+  ```
   {
       error: false,
       data: https://developer.wordpress.com/docs/api/1.1/get/sites/%24site/posts/%24post_ID
@@ -81,7 +81,7 @@
 
   - success response
 
-  ```json
+  ```
   {
       error: false,
       data: Same as /api/posts [Length 3]
