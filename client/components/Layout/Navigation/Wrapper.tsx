@@ -16,17 +16,24 @@ const none = 'none';
 export const Wrapper: React.FC<WrapperTypes> = ({ type }) => {
   // list is either categories or tags, based on 'type'
   const [list, updateList] = useState<categoryOrTagType[]>([]);
+  const [loading, updateLoading] = useState(false);
+
   useEffect(() => {
+    updateLoading(true);
     if (type === 'category') {
       // load categories
-      getCategories().then((categories) => {
-        updateList(categories);
-      });
+      getCategories()
+        .then((categories) => {
+          updateList(categories);
+        })
+        .finally(() => updateLoading(false));
     } else {
       // load tags
-      getTags().then((tags) => {
-        updateList(tags);
-      });
+      getTags()
+        .then((tags) => {
+          updateList(tags);
+        })
+        .finally(() => updateLoading(false));
     }
   }, []);
 
@@ -68,15 +75,19 @@ export const Wrapper: React.FC<WrapperTypes> = ({ type }) => {
         <option className="opt" value="none">
           None
         </option>
-        {/* LIST OF AVAILABLE CATEGORIES/TAGS */}
-        {list.map((listItem) => (
-          // slug is value to inject in search query
-          // example => /?category=--->foo-bar<--- slug
-          // => /?tag=--->foo-bar<-- slug
-          <option className="opt" value={listItem.slug} key={listItem.slug}>
-            {listItem.name}
-          </option>
-        ))}
+
+        {loading && <option className="opt spinner-opt">Loading</option>}
+
+        {!loading &&
+          // LIST OF AVAILABLE CATEGORIES/TAGS
+          list.map((listItem) => (
+            // slug is value to inject in search query
+            // example => /?category=--->foo-bar<--- slug
+            // => /?tag=--->foo-bar<-- slug
+            <option className="opt" value={listItem.slug} key={listItem.slug}>
+              {listItem.name}
+            </option>
+          ))}
       </Select>
       <style jsx>{`
         .opt {

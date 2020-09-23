@@ -89,6 +89,7 @@ const Home: React.FC<InferGetServerSidePropsType<
               articleAuthor={post.author.name}
               articlePublishedDate={post.date}
               articleCategories={post.categories}
+              articleTags={post.tags}
             />
           ))}
         </Flex>

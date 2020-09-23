@@ -11,7 +11,11 @@ interface ArticleCardTypes {
   articleDescription: string;
   articleCategories: {
     [categoryName: string]: {
-      ID: number;
+      slug: string;
+    };
+  };
+  articleTags: {
+    [tagName: string]: {
       slug: string;
     };
   };
@@ -27,6 +31,7 @@ export const ArticleCard: React.FC<ArticleCardTypes> = ({
   articleCategories,
   articleAuthor,
   articlePublishedDate,
+  articleTags,
 }) => (
   <Box width={[1, 1 / 2]} p={[2, 3]}>
     <Card sx={{ border: '1px solid #EAEAEA' }}>
@@ -66,7 +71,7 @@ export const ArticleCard: React.FC<ArticleCardTypes> = ({
         />
 
         {/* ARTICLE CATEGORIES */}
-        <Flex>
+        <Flex flexWrap="wrap">
           {Object.keys(articleCategories).map((articleCategory, idx) => (
             <Link
               href={`/?category=${articleCategories[articleCategory].slug}`}
@@ -98,6 +103,29 @@ export const ArticleCard: React.FC<ArticleCardTypes> = ({
           {formatTimeDiff(new Date(articlePublishedDate))} by{' '}
           <u>{articleAuthor}</u>
         </Text>
+
+        <br />
+
+        {/* ARTICLE TAGS */}
+        <Flex flexWrap="wrap">
+          {Object.keys(articleTags).map((articleTag) => (
+            <Link
+              key={articleTag}
+              href={`/?tag=${articleTags[articleTag].slug}`}
+            >
+              <Box
+                mr={2}
+                my={1}
+                py={2}
+                px={3}
+                sx={{ border: '1px solid lightgrey', cursor: 'pointer' }}
+                fontSize={1}
+              >
+                {articleTag}
+              </Box>
+            </Link>
+          ))}
+        </Flex>
       </Box>
     </Card>
   </Box>

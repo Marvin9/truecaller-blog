@@ -12,12 +12,17 @@ export type PostType = {
   excerpt: string;
   /*
     article categories in json format
-    with key as category name & ID used to
+    with key as category name & slug used to
     navigate to articles of that category
   */
   categories: {
     [key: string]: {
       ID: number;
+      slug: string;
+    };
+  };
+  tags: {
+    [key: string]: {
       slug: string;
     };
   };
