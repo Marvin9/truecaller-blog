@@ -41,6 +41,7 @@ const Home: React.FC<InferGetServerSidePropsType<
 
   // load more posts
   const loadNextPage = async () => {
+    // if all posts are loaded
     if (disableLoading) return;
 
     updateNextPageLoading(true);
@@ -63,6 +64,7 @@ const Home: React.FC<InferGetServerSidePropsType<
   return (
     <>
       <Layout>
+        {/* SHOW QUERY => IS IT CATEGORY/TAG RELATED */}
         {!!query && (
           <Text fontSize={3} fontWeight="bolder">
             <u>
@@ -70,6 +72,8 @@ const Home: React.FC<InferGetServerSidePropsType<
             </u>
           </Text>
         )}
+
+        {/* LIST OF ARTICLES */}
         <Flex flexWrap="wrap" alignItems="stretch">
           {_posts.map((post) => (
             <ArticleCard

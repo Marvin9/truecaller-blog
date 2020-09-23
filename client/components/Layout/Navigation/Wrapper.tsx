@@ -51,7 +51,11 @@ export const Wrapper: React.FC<WrapperTypes> = ({ type }) => {
         <option className="opt" value="none">
           None
         </option>
+        {/* LIST OF AVAILABLE CATEGORIES/TAGS */}
         {list.map((listItem) => (
+          // slug is value to inject in search query
+          // example => /?category=--->foo-bar<--- slug
+          // => /?tag=--->foo-bar<-- slug
           <option className="opt" value={listItem.slug} key={listItem.slug}>
             {listItem.name}
           </option>

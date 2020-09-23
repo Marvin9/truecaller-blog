@@ -103,6 +103,8 @@ const Post: React.FC = () => {
   );
 };
 
+// THIS PAGE SHOULD LOAD SERVER SIDE
+// SO THAT WE GET ACCESS TO router.query EVEN ON HARD REFRESH
 export async function getServerSideProps() {
   return {
     props: {},
