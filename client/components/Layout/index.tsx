@@ -26,7 +26,7 @@ export const Layout: React.FC<LayoutTypes> = WrapErrorBoundary(
       <br />
 
       {/* CATEGORIES & TAGS LIST SECTION */}
-      <Navigation kind={kind} />
+      <Navigation />
 
       {/* DYNAMIC BODY SECTION, TO LIST ALL ARTICLES/RENDER FULL ARTICLE */}
       <Flex

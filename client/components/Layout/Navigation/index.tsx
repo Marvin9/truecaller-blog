@@ -2,10 +2,9 @@ import React from 'react';
 import Link from 'next/link';
 import { Flex, Text } from 'rebass';
 
-import { kind } from '../index';
 import { Wrapper } from './Wrapper';
 
-const Navigation: React.FC<{ kind: kind }> = ({ kind }) => (
+const Navigation: React.FC = () => (
   <Flex
     bg="#0784F9"
     color="white"
