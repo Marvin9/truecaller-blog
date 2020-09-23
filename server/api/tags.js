@@ -8,6 +8,16 @@ const response = require('../utils/response');
 const MAX_TAGS_CALL = 10;
 
 // top 10 tags based on post counts
+/**
+ * ALGORITHM:
+ * => make array which should not exceed size 10.
+ * => limit max calls
+ *    [max tags that could be fethced = (per_page) * MAX_TAGS_CALL = 100 * 10 = 1000]
+ * => Iterate to each /tags?page=n api
+ *    => Iterate all 100 tags of page n
+ *       => for individual tag, place it in topTenTags array
+ *          such that order of that array remains descending & size of array must remain 10
+ */
 module.exports = async (req, res, next) => {
   try {
     let page = 1;
