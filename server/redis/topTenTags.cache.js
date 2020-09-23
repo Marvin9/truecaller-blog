@@ -14,7 +14,7 @@ const log = require('../utils/logger');
 // Top 10 truecaller tags
 const TRUECALLER_TAGS = 'TRUECALLER_TAGS';
 // Expire key in 1 day
-const EXPIRE = 5; // 60 * 60 * 24;
+const EXPIRE = 60 * 60 * 24;
 
 const getLatestTags = () =>
   new Promise(async (resolve) => {
