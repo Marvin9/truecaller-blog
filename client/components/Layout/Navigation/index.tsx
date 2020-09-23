@@ -12,10 +12,11 @@ const Navigation: React.FC<{ kind: kind }> = ({ kind }) => (
     sx={{ maxWidth: 1024, mx: 'auto', p: 3, borderRadius: '10px' }}
     alignItems="center"
     justifyContent="center"
+    flexDirection={['column', 'row']}
   >
     {/* HOME PAGE LINK */}
     <Link href="/">
-      <Text fontWeight="bold" sx={{ cursor: 'pointer' }}>
+      <Text fontWeight="bold" sx={{ cursor: 'pointer' }} mb={[2, 0]}>
         HOME
       </Text>
     </Link>

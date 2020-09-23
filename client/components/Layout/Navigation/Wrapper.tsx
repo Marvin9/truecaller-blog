@@ -47,7 +47,13 @@ export const Wrapper: React.FC<WrapperTypes> = ({ type }) => {
   }, [listSelection]);
 
   return (
-    <Flex alignItems="center" justifyContent="center" mx={5}>
+    <Flex
+      alignItems="center"
+      justifyContent="center"
+      mx={5}
+      flexDirection={['column', 'row']}
+      my={[2, 0]}
+    >
       <Label fontWeight="bolder" width="auto">
         {type === 'category' ? 'Categories' : 'Tags'}
       </Label>

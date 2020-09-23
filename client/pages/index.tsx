@@ -74,7 +74,11 @@ const Home: React.FC<InferGetServerSidePropsType<
         )}
 
         {/* LIST OF ARTICLES */}
-        <Flex flexWrap="wrap" alignItems="stretch">
+        <Flex
+          flexWrap="wrap"
+          alignItems="stretch"
+          flexDirection={['column', 'row']}
+        >
           {_posts.map((post) => (
             <ArticleCard
               key={post.ID}

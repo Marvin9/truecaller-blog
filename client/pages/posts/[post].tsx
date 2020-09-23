@@ -75,9 +75,9 @@ const Post: React.FC = () => {
             Similar posts:{' '}
           </Text>
           <br />
-          <Flex flexWrap="wrap">
+          <Flex flexWrap="wrap" flexDirection={['column', 'row']}>
             {relatedPostsData.map((relatedPost) => (
-              <Card width={1 / 3} p={5}>
+              <Card width={[1, 1, 1 / 3]} p={[0, 5]} my={[5, 0]}>
                 {relatedPost.post_thumbnail && (
                   <Image
                     alt={relatedPost.title}
