@@ -13,6 +13,7 @@
     "implicit-arrow-linebreak": "off",
     "function-paren-newline": "off",
     "indent": "off",
-    "no-restricted-globals": "off"
+    "no-restricted-globals": "off",
+    "no-async-promise-executor": "off"
   }
 }

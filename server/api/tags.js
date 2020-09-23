@@ -5,11 +5,16 @@ const axios = require('axios').default;
 const { BLOG_ENDPOINT } = require('../utils/constants');
 const response = require('../utils/response');
 
+const topTenTagsCache = require('../redis/topTenTags.cache');
+
 const MAX_TAGS_CALL = 10;
 
-// top 10 tags based on post counts
 /**
- * ALGORITHM:
+ * top 10 tags based on post counts.
+ * To avoid recalculation on each request, we will store it in redis cache
+ * which will expire in 24 hours and required calculation again.
+ *
+ * ALGORITHM TO FIND TOP 10 LATEST TAGS:
  * => make array which should not exceed size 10.
  * => limit max calls
  *    [max tags that could be fethced = (per_page) * MAX_TAGS_CALL = 100 * 10 = 1000]
@@ -20,6 +25,14 @@ const MAX_TAGS_CALL = 10;
  */
 module.exports = async (req, res, next) => {
   try {
+    const cache = await topTenTagsCache.getLatestTags();
+    // check if it was calculated
+    if (cache.length) {
+      res.statusCode = 200;
+      res.json(response.successResponse(cache));
+      return;
+    }
+
     let page = 1;
     const topTenTags = [];
 
@@ -62,6 +75,13 @@ module.exports = async (req, res, next) => {
         if (topTenTags.length > 10) topTenTags.pop();
       });
     }
+
+    // we are using { name, slug } on front end side
+    // so we will store only necessary keys it in redis
+    const necessaryTopTenTagsData = topTenTags.map((tag) =>
+      JSON.stringify({ name: tag.name, slug: tag.slug }),
+    );
+    topTenTagsCache.storeLatestTags(necessaryTopTenTagsData);
 
     res.statusCode = 200;
     res.json(response.successResponse(topTenTags));
